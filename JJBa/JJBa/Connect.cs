@@ -13,8 +13,8 @@ namespace JJBa
     {
         private static SqlConnectionStringBuilder connS = new SqlConnectionStringBuilder()
         {
-            // DataSource = "303-2\\SQLEXPRESS",
-            DataSource = "DESKTOP-U5HC5KL",
+             DataSource = "303-2\\SQLEXPRESS",
+            //DataSource = "DESKTOP-U5HC5KL",
             InitialCatalog = "Ver4",
             IntegratedSecurity = true
         };
@@ -31,7 +31,9 @@ namespace JJBa
                 if (sql.HasRows)
                 {
                     sql.Read();
-                    b = "0:" + sql[4].ToString();
+                    MParent.idd = Int16.Parse(sql[0].ToString());
+                    MParent.id = 0;
+                    b =  sql[4].ToString();
                 }
                 else
                 {
@@ -41,7 +43,9 @@ namespace JJBa
                     if (sql.HasRows)
                     {
                         sql.Read();
-                        b = "1:" + sql[3];
+                        MParent.idd = Int16.Parse(sql[0].ToString());
+                        MParent.id = 1;
+                        b = sql[3].ToString();
                     }
                 }
                 sql.Close();
@@ -55,7 +59,6 @@ namespace JJBa
             using (SqlConnection conn = new SqlConnection(connS.ConnectionString))
             {
                 DataTable dt = new DataTable();
-                bool b = false;
                 conn.Open();
                 string d = $"Select * From {name}";
                 SqlCommand cmd = new SqlCommand(d, conn);
@@ -76,11 +79,9 @@ namespace JJBa
             {
                 System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
                 DataTable dt = new DataTable();
-                bool b = false;
                 conn.Open();
-                string d = $"UPDATE dbo.RabDB Set [Junior_мин_ЗП] = '{name[1]}', [Middle_мин_ЗП] = '{name[2]}', [Senior_мин_ЗП] = '{name[3]}', [Коэффициент_для_Анализ_и_проектирование]= '{name[4]}', [Коэффициент_для_Установка_оборудования] = '{name[5]}', [Коэффициент_для_Техническое_обслуживание_и_сопровождение] = '{name[6]}', [Коэффициент_времени] = '{name[7]}', [Коэффициент_сложности] = '{name[8]}', [Коэффициент_для_перевода_в_денежный_эквивалент] = '{name[9]}' WHERE Id_d = '{name[0]}'";
-                SqlCommand cmd = new SqlCommand(d, conn);
-                cmd.ExecuteNonQuery();
+                string d = $"UPDATE RabDB Set [Junior_мин_ЗП] = '{name[1]}', [Middle_мин_ЗП] = '{name[2]}', [Senior_мин_ЗП] = '{name[3]}', [Коэффициент_для_Анализ_и_проектирование]= '{name[4]}', [Коэффициент_для_Установка_оборудования] = '{name[5]}', [Коэффициент_для_Техническое_обслуживание_и_сопровождение] = '{name[6]}', [Коэффициент_времени] = '{name[7]}', [Коэффициент_сложности] = '{name[8]}', [Коэффициент_для_перевода_в_денежный_эквивалент] = '{name[9]}' WHERE Id_d = '{name[0]}'";
+                new SqlCommand(d, conn).ExecuteNonQuery(); 
                 MessageBox.Show("Успешно!");
                 conn.Close();
 

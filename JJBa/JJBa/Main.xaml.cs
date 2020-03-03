@@ -25,59 +25,52 @@ namespace JJBa
             InitializeComponent();
         }
         private DataSet ds = new DataSet();
+        private List<TextBox> tb = new List<TextBox>();
+       
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            T1.MaxLength = 10;
-            T2.MaxLength = 10;
-            T3.MaxLength = 10;
-            T4.MaxLength = 10;
-            T5.MaxLength = 10;
-            T6.MaxLength = 10;
-            T7.MaxLength = 10;
-            T8.MaxLength = 10;
-            T9.MaxLength = 10;
-            loaddb();
+            checkload();
 
+        }
+        public void checkload()
+        {
+            tb.Clear();
+            tb.Add(T1); tb.Add(T2); tb.Add(T3);
+            tb.Add(T4); tb.Add(T5); tb.Add(T6);
+            tb.Add(T7); tb.Add(T8); tb.Add(T9);
+            for (int i = 0; i < tb.Count; i++)
+            {
+                tb[i].MaxLength = 10;
+                tb[i].MaxLines = 1;
+            }
+            loaddb();
         }
         private void loaddb()
         {
 
 
-            idc.Items.Clear();
             ds.Tables.Clear();
             ds.Tables.Add(Connect.read("RabDB"));
-            Gr.ItemsSource = ds.Tables[0].AsDataView();
-            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
-                idc.Items.Add(ds.Tables[0].Rows[i][0].ToString());
-            idc.SelectedIndex = 0;
+            TextUpdate();
         }
 
-        private void Window_Closed(object sender, EventArgs e)
-        {
-            Application.Current.Shutdown();
-        }
+        
 
         private void idc_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            TextUpdate();
+            
         }
 
         private void TextUpdate()
         {
 
             System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
-            if (idc.SelectedIndex != -1)
-            {
-                T1.Text = Math.Round(Double.Parse(ds.Tables[0].Rows[idc.SelectedIndex][1].ToString()), 2).ToString();
-                T2.Text = Math.Round(Double.Parse(ds.Tables[0].Rows[idc.SelectedIndex][2].ToString()), 2).ToString();
-                T3.Text = Math.Round(Double.Parse(ds.Tables[0].Rows[idc.SelectedIndex][3].ToString()), 2).ToString();
-                T4.Text = ds.Tables[0].Rows[idc.SelectedIndex][4].ToString();
-                T5.Text = ds.Tables[0].Rows[idc.SelectedIndex][5].ToString();
-                T6.Text = ds.Tables[0].Rows[idc.SelectedIndex][6].ToString();
-                T7.Text = ds.Tables[0].Rows[idc.SelectedIndex][7].ToString();
-                T8.Text = ds.Tables[0].Rows[idc.SelectedIndex][8].ToString();
-                T9.Text = ds.Tables[0].Rows[idc.SelectedIndex][9].ToString();
-            }
+            
+                for (int i = 0; i < tb.Count; i++)
+                {
+                    tb[i].Text = Math.Round(Double.Parse(ds.Tables[0].Rows[MParent.idd-1][i+1].ToString()), 2).ToString();
+                }
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -87,18 +80,14 @@ namespace JJBa
             bool doDoHasDoHasMesh = true;
             try
             {
-                dr[0] = Int16.Parse(idc.Text);
-                dr[1] = Double.Parse(T1.Text.Replace(',', '.'));
-                dr[2] = Double.Parse(T2.Text.Replace(',', '.'));
-                dr[3] = Double.Parse(T3.Text.Replace(',', '.'));
-                dr[4] = Double.Parse(T4.Text.Replace(',', '.'));
-                dr[5] = Double.Parse(T5.Text.Replace(',', '.'));
-                dr[6] = Double.Parse(T6.Text.Replace(',', '.'));
-                dr[7] = Double.Parse(T7.Text.Replace(',', '.'));
-                dr[8] = Double.Parse(T8.Text.Replace(',', '.'));
-                dr[9] = Double.Parse(T9.Text.Replace(',', '.'));
+                dr[0] = MParent.idd;
+                for (int i = 0; i < tb.Count; i++)
+                {
+                    dr[i+1] = Double.Parse(tb[i].Text.Replace(',', '.'));
+                }
+
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 doDoHasDoHasMesh = false;
                 MessageBox.Show("Проверьте правильность данных", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -114,7 +103,8 @@ namespace JJBa
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-
+            MParent mp = (MParent)Application.Current.Windows[1];
+            mp.forma.Content = mp.mn.Mtop;
         }
     }
 }

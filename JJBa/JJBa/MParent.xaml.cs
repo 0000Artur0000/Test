@@ -21,14 +21,20 @@ namespace JJBa
     {
         public MParent()
         {
+            new Log().Show();
+            this.Hide();
             InitializeComponent();
         }
-        Good mn = new Good();
-        public Main mns = new Main();
+
         List<Label> lbs = new List<Label>();
-        public int id=-1;
+        public static int id=-1;
+        public static int idd = -1;
+        public Good mn = new Good();
+        public Main mns = new Main();
+        public SZad szd = new SZad();
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            mn.load();
             Application.Current.MainWindow = this;
             lbs.Add(mn.L1);
             forma.Content = mn.Mtop;
@@ -37,6 +43,11 @@ namespace JJBa
         {
             lbs[0].Content = lbs[0].Content + s+"!";
 
+        }
+
+        private void forma_Closed(object sender, EventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }

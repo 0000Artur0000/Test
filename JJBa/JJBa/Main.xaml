@@ -5,10 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:JJBa"
         mc:Ignorable="d"
-        Title="Main" Height="507" Width="800" Loaded="Window_Loaded" Closed="Window_Closed" WindowStyle="None">
+        Title="Main" Height="312.999" Width="800" Loaded="Window_Loaded" WindowStyle="None">
     <Grid x:Name="gtop" Margin="0,0,0,-1">
-        <DataGrid x:Name="Gr" Margin="10,10,10,334"/>
-        <ComboBox x:Name="idc" HorizontalAlignment="Left" Margin="33,0,0,307" Width="50" Height="22" VerticalAlignment="Bottom" SelectionChanged="idc_SelectionChanged"/>
         <TextBox x:Name="T1" HorizontalAlignment="Left" Height="23" Margin="10,0,0,224" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="120"/>
         <Label Content=" Junior" HorizontalAlignment="Left" Margin="10,0,0,248" VerticalAlignment="Bottom" FontWeight="Bold"/>
         <TextBox x:Name="T2" HorizontalAlignment="Left" Height="23" Margin="141,0,0,224" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="120"/>
@@ -21,7 +19,6 @@
         <Label Content="Установка оборудования" HorizontalAlignment="Left" Margin="180,0,0,165" VerticalAlignment="Bottom" FontWeight="Bold" Width="158"/>
         <TextBox x:Name="T6" HorizontalAlignment="Left" Height="22" Margin="343,0,0,143" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="284"/>
         <Label Content="Техническое обслуживание и сопровождение" HorizontalAlignment="Left" Margin="343,0,0,165" VerticalAlignment="Bottom" Width="302" FontWeight="Bold"/>
-        <Label Content="ID:" HorizontalAlignment="Left" Margin="10,0,0,307" VerticalAlignment="Bottom" Width="23" Padding="0" Height="22" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         <Label Content="Коэффициенты гарантированного минимума зарплаты за месяц для каждого из грейдов:" HorizontalAlignment="Left" Margin="10,0,0,275" VerticalAlignment="Bottom" Width="772" FontSize="16" FontWeight="Bold"/>
         <Label Content="Коэффициент характера выполненных работ для каждого из возможных значений параметра:" HorizontalAlignment="Left" Margin="10,0,0,192" VerticalAlignment="Bottom" Width="772" FontSize="16" FontWeight="Bold"/>
         <Label Content="Коэффициенты сложности и времени исполнения задач:" HorizontalAlignment="Left" Margin="10,0,0,111" VerticalAlignment="Bottom" Width="772" FontSize="16" FontWeight="Bold"/>

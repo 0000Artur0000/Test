@@ -5,10 +5,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:JJBa"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded">
+             d:DesignHeight="500" d:DesignWidth="600" Loaded="UserControl_Loaded" MinWidth="600" MinHeight="500">
     <Grid x:Name="Mtop" Background="White">
         <Label x:Name="L1" Content="Добро пожаловать, " HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="780" FontSize="22"/>
-        <Button Content="Управление коэффициентами" Margin="200,120,200,0" VerticalAlignment="Top" Height="101" FontSize="24" FontWeight="Bold" Click="Button_Click"/>
+        <Button x:Name="btn1" Content="Управление коэффициентами" Margin="100,145,100,295" VerticalAlignment="Center" Height="60" FontSize="24" FontWeight="Bold" Click="Button_Click" Style="{DynamicResource Oval}" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" Width="400"/>
+        <Button x:Name="btn2" Content="Список задач " Margin="100,210,100,230" VerticalAlignment="Center" Height="60" FontSize="24" FontWeight="Bold" Style="{DynamicResource Oval}" HorizontalAlignment="Center" Width="400" Click="Button_Click_2"/>
+        <Button x:Name="btn3" Content="Список исполнителей" Margin="100,275,100,165" VerticalAlignment="Center" Height="60" FontSize="24" FontWeight="Bold" Style="{DynamicResource Oval}" HorizontalAlignment="Center" Width="400" Click="Button_Click_3"/>
 
     </Grid>
 </UserControl>

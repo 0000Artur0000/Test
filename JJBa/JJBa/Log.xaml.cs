@@ -46,10 +46,12 @@ namespace JJBa
                 if (!String.IsNullOrEmpty(jo))
                 {
                     //MessageBox.Show(jo);
-                    MParent main = new MParent();
+                    MParent main = (MParent)Application.Current.Windows[1];
+                    
+                    
+                  
                     main.Show();
-                    main.load(jo.Split(':')[1].Replace("  ", " "));
-                    main.id = Int16.Parse(jo.Split(':')[0]);
+                    main.load(jo.Replace("  ", " "));
                     this.Hide();
                 }
                 else
@@ -59,6 +61,9 @@ namespace JJBa
 
         }
 
-
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }

@@ -24,18 +24,43 @@ namespace JJBa
         {
             InitializeComponent();
         }
-        Window mp = Application.Current.MainWindow;
+        MParent mp;
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
-            //mp.forma.Content = null;
-            MParent mp1 = (MParent)mp;
-            mp1.forma.Content = mp1.mns.gtop;
+            mp.mns.checkload();
+            mp.forma.Content = mp.mns.gtop;
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
+            
+        }
+        public void load()
+        {
 
+            mp = (MParent)Application.Current.Windows[1];
+            
+            if (MParent.id == 0)
+            {
+                btn1.Visibility = Visibility.Hidden;
+            }
+        }
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            
+            mp.forma.Content = mp.szd.gtop;
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            mp.mns.checkload();
+            mp.forma.Content = mp.mns.gtop;
         }
     }
 }
