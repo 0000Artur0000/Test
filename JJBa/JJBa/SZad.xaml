@@ -9,6 +9,11 @@
     <Grid x:Name="gtop" Background="White">
         <DataGrid x:Name="Gr" Margin="10,10,10,236"/>
         <Button Content="Назад" Margin="10,0,0,10" Style="{DynamicResource Oval}" FontSize="16" FontFamily="Arial Black" Height="33" VerticalAlignment="Bottom" Click="Button_Click_1" HorizontalAlignment="Left" Width="144"/>
+        <Label x:Name="L1" Content="Статус:" HorizontalAlignment="Left" Margin="10,0,0,204" VerticalAlignment="Bottom"/>
+        <ComboBox x:Name="C1" HorizontalAlignment="Left" Margin="10,0,0,177" VerticalAlignment="Bottom" Width="120" SelectionChanged="C1_SelectionChanged"/>
+        <Label x:Name="L2" Content="Исполнитель:" HorizontalAlignment="Left" Margin="135,0,0,204" VerticalAlignment="Bottom"/>
+        <ComboBox x:Name="C2" HorizontalAlignment="Left" Margin="135,0,0,177" VerticalAlignment="Bottom" Width="200" SelectionChanged="C2_SelectionChanged"/>
+        <Button Content="Изменить" Margin="646,0,0,10" Style="{DynamicResource Oval}" FontSize="16" FontFamily="Arial Black" Height="33" VerticalAlignment="Bottom" Click="Button_Click_1" HorizontalAlignment="Left" Width="144"/>
 
     </Grid>
 </UserControl>

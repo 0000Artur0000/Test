@@ -13,8 +13,8 @@ namespace JJBa
     {
         private static SqlConnectionStringBuilder connS = new SqlConnectionStringBuilder()
         {
-             DataSource = "303-2\\SQLEXPRESS",
-            //DataSource = "DESKTOP-U5HC5KL",
+             //DataSource = "303-2\\SQLEXPRESS",
+            DataSource = "DESKTOP-U5HC5KL",
             InitialCatalog = "Ver4",
             IntegratedSecurity = true
         };
@@ -33,6 +33,8 @@ namespace JJBa
                     sql.Read();
                     MParent.idd = Int16.Parse(sql[0].ToString());
                     MParent.id = 0;
+                    MParent.log.Clear();
+                    MParent.log.Add(sql[1].ToString());
                     b =  sql[4].ToString();
                 }
                 else
@@ -45,6 +47,8 @@ namespace JJBa
                         sql.Read();
                         MParent.idd = Int16.Parse(sql[0].ToString());
                         MParent.id = 1;
+                        MParent.log.Clear();
+                        MParent.log.Add(sql[1].ToString());
                         b = sql[3].ToString();
                     }
                 }

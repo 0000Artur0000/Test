@@ -55,12 +55,13 @@ namespace JJBa
         {
             
             mp.forma.Content = mp.szd.gtop;
+            mp.szd.load();
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            mp.mns.checkload();
-            mp.forma.Content = mp.mns.gtop;
+            mp.forma.Content = mp.spisok.gtop;
+            mp.spisok.load();
         }
     }
 }

@@ -29,9 +29,12 @@ namespace JJBa
         List<Label> lbs = new List<Label>();
         public static int id=-1;
         public static int idd = -1;
+        public static List<string> log = new List<string>();
+        public static string name = "";
         public Good mn = new Good();
         public Main mns = new Main();
         public SZad szd = new SZad();
+        public spisokIsp spisok = new spisokIsp();
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             mn.load();
